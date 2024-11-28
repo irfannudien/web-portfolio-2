@@ -1,15 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Quicksand:wght@300..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .bg-grid-pattern {
-    background-image: linear-gradient(
-        to right,
-        rgba(64, 64, 64, 0.2) 1px,
-        transparent 1px
-      ),
-      linear-gradient(to bottom, rgba(64, 64, 64, 0.2) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
+* {
+  scrollbar-width: none; /* Untuk Firefox */
+  -ms-overflow-style: none; /* Untuk Internet Explorer */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Untuk Webkit browsers (Chrome, Safari) */
 }

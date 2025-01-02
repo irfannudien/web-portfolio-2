@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import Project from "./Project";
-import SideNav from "../components/Fragments/SideNav";
+
+import SideBar from "../components/Fragments/SideBar";
 
 export default function Layout() {
+  const [active, setActive] = useState("home");
   return (
     <>
-      <SideNav />
+      <SideBar />
       <div className="flex flex-col">
         <Home />
         <About />

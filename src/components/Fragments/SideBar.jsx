@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"; // Mengimpor React dan hooks useState, useEffect
-import Button from "../Elements/Button"; // Mengimpor komponen Button
-import { FaHome, FaUserAlt } from "react-icons/fa"; // Mengimpor ikon untuk sidebar
-import { IoFileTrayFull } from "react-icons/io5"; // Mengimpor ikon untuk sidebar
-import { IoIosMail } from "react-icons/io"; // Mengimpor ikon untuk sidebar
+import React, { useState, useEffect } from "react";
+import { FaHome, FaUserAlt } from "react-icons/fa";
+import { IoFileTrayFull } from "react-icons/io5";
+import { IoIosMail } from "react-icons/io";
 import { RiMenuUnfoldLine } from "react-icons/ri";
+import ButtonSidebar from "../Elements/ButtonSidebar";
 
 export default function SideBar() {
   const [active, setActive] = useState("home");
@@ -25,12 +25,12 @@ export default function SideBar() {
   const handleClick = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
       setActive(id);
+      section.scrollIntoView({ behavior: "auto", block: "start" });
     }
   };
 
-  const handleScroll = () => {
+  const handleScrollSidebar = () => {
     const sections = document.querySelectorAll("section");
     const scrollPosition = window.scrollY;
 
@@ -50,40 +50,45 @@ export default function SideBar() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollSidebar);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollSidebar);
     };
   }, []);
 
   return (
     <div
       className={`fixed top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out
-      flex-col overflow-hidden
+      flex flex-col overflow-hidden
       ${isOpen ? "w-28" : "w-10"}
-      hidden md:flex
+      
         `}
       // style={{ width: isOpen ? "fit-content" : "3.5rem" }}
     >
-      <nav className="flex flex-col bg-emerald-600 h-full justify-center gap-3 rounded-r-lg py-2">
-        <Button onClick={toggleSidebar} className="flex gap-2 items-center">
+      <nav className="flex flex-col bg-[#404040] h-full justify-center gap-3 rounded-r-lg py-2">
+        <ButtonSidebar
+          onClick={toggleSidebar}
+          className={`flex gap-2 items-center ${
+            isOpen ? "rounded-none" : "rounded-r-lg"
+          }`}
+        >
           <RiMenuUnfoldLine size={25} />
           {isOpen && <span className="text-sm">Menu</span>}
-        </Button>
+        </ButtonSidebar>
         {navItems.map((item) => (
-          <Button
+          <ButtonSidebar
             key={item.id}
             onClick={() => handleClick(item.id)}
             className={`flex gap-2 items-center ${
               isOpen ? "rounded-none" : "rounded-r-lg"
             } ${
-              active === item.id ? "bg-slate-600" : "text-white"
-            } duration-300`}
+              active === item.id ? "bg-[#666666]" : "text-white"
+            } duration-500`}
           >
             {item.icon}
             {isOpen && <span className="text-sm">{item.label}</span>}
-          </Button>
+          </ButtonSidebar>
         ))}
       </nav>
     </div>

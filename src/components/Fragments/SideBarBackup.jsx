@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"; // Mengimpor React dan hooks useState, useEffect
-import Button from "../Elements/Button"; // Mengimpor komponen Button
 import { FaHome, FaUserAlt } from "react-icons/fa"; // Mengimpor ikon untuk sidebar
 import { IoFileTrayFull } from "react-icons/io5"; // Mengimpor ikon untuk sidebar
 import { IoIosMail } from "react-icons/io"; // Mengimpor ikon untuk sidebar
+import ButtonSidebar from "../Elements/ButtonSidebar";
 
 export default function SideBar() {
   // State untuk menyimpan ID elemen yang sedang aktif (awalannya "home")
@@ -51,7 +51,7 @@ export default function SideBar() {
       <nav className="flex flex-col bg-emerald-600 h-full justify-center gap-3 rounded-r-lg py-2">
         {/* Looping untuk membuat tombol berdasarkan navItems */}
         {navItems.map((item) => (
-          <Button
+          <ButtonSidebar
             key={item.id} // Menggunakan ID sebagai key
             path={`#${item.id}`} // Menggunakan ID sebagai path
             onClick={() => setActive(item.id)} // Set ID aktif saat tombol diklik
@@ -60,7 +60,7 @@ export default function SideBar() {
             }`}
           >
             {item.icon} {/* Menampilkan ikon pada tombol */}
-          </Button>
+          </ButtonSidebar>
         ))}
       </nav>
     </div>

@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
-export default function Navbar() {
+const Navbar = () => {
+  const [isScroll, setIsScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScrollBlur = () => {
+      setIsScroll(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScrollBlur);
+    return () => window.removeEventListener("scroll", handleScrollBlur);
+  }, []);
+
   return (
-    <div className="fixed w-screen backdrop-blur-sm bg-[rgba(64,64,64,.2)] px-5 items-center h-16">
-      <div className="flex items-center justify-between">
-        <h1 className="font-poiret text-3xl super-bold tracking-widest leading-7">
-          ear
-          <br />
-          -fun
-        </h1>
+    <div
+      className={`${
+        isScroll ? "backdrop-blur-sm bg-[#a5a5a5]/20" : "bg-transparent"
+      }
+      fixed w-full transition-all duration-300 ease-in-out px-5 items-center z-50`}
+    >
+      <div className="flex items-center justify-between mx-10">
+        <div>
+          <p className="font-poiret text-3xl super-bold tracking-widest leading-7">
+            ear
+            <br />
+            -fun
+          </p>
+          <p>Frontend Developer</p>
+        </div>
         <div className="flex gap-2 text-2xl">
           <FaLinkedinIn />
           <FaGithub />
@@ -18,4 +37,6 @@ export default function Navbar() {
       </div>
     </div>
   );
-}
+};
+
+export default Navbar;

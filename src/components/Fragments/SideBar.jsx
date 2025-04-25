@@ -60,9 +60,9 @@ export default function SideBar() {
   return (
     <div
       className={`fixed top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out
-      flex flex-col overflow-hidden
+      flex-col overflow-hidden
       ${isOpen ? "w-28" : "w-10"}
-      
+      hidden md:flex
         `}
       // style={{ width: isOpen ? "fit-content" : "3.5rem" }}
     >

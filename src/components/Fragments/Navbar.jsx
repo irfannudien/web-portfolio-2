@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { animate, motion } from "framer-motion";
 
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
   const [isTabletUp, setIsTabletUp] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
+  // SCROLL ACTIVE
   useEffect(() => {
     const handleScrollBlur = () => {
       setIsScroll(window.scrollY > 0);
@@ -30,6 +32,43 @@ const Navbar = () => {
       : "bg-transparent"
     : "bg-white";
 
+  // HAMBURGER MENU
+  const topBarVariants = {
+    open: {
+      y: [0, 10, 10],
+      rotate: [0, 0, 45],
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+    closed: {
+      y: [10, 10, 0],
+      rotate: [45, 0, 0],
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+  };
+
+  const centerBarVariants = {
+    open: {
+      rotate: [0, 0, -45],
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+    closed: {
+      rotate: [-45, 0, 0],
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+  };
+
+  const bottomBarVariants = {
+    open: {
+      y: [0, -10, -10],
+      rotate: [0, 0, 45],
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+    closed: {
+      y: [-10, -10, 0],
+      rotate: [45, 0, 0],
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+  };
   return (
     <div
       className={`
@@ -56,18 +95,21 @@ const Navbar = () => {
             className="flex flex-col gap-2 z-50"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span
-              className={`h-[2px] w-6 bg-[#666666]
-                ${isOpen ? "top-rotate" : "reset-top-rotate"}`}
-            ></span>
-            <span
-              className={`h-[2px] w-6 bg-[#666666] transition-transform duration-500 ease-in-out
-                ${isOpen ? "center-rotate" : "reset-center-rotate"}`}
-            ></span>
-            <span
-              className={`h-[2px] w-3 bg-[#666666] origin-left self-end
-              ${isOpen ? "bottom-rotate" : "reset-bottom-rotate"}`}
-            ></span>
+            <motion.span
+              className="h-[2px] w-6 bg-[#666666]"
+              variants={topBarVariants}
+              animate={isOpen ? "open" : "closed"}
+            ></motion.span>
+            <motion.span
+              className="h-[2px] w-6 bg-[#666666]"
+              variants={centerBarVariants}
+              animate={isOpen ? "open" : "closed"}
+            ></motion.span>
+            <motion.span
+              className="h-[2px] w-3 bg-[#666666] origin-left self-end"
+              variants={bottomBarVariants}
+              animate={isOpen ? "open" : "closed"}
+            ></motion.span>
           </button>
         </div>
 

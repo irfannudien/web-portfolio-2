@@ -43,7 +43,6 @@ export default function SideBar() {
         scrollPosition >= scrollTop - 150 &&
         scrollPosition < scrollTop + scrollHeight - 150
       ) {
-        // window.history.pushState(null, "", `#${sec.getAttribute("id")}`);
         setActive(sectionId);
       }
     });
@@ -59,7 +58,7 @@ export default function SideBar() {
 
   return (
     <div
-      className={`fixed top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out
+      className={`fixed top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out z-50
       flex-col overflow-hidden
       ${isOpen ? "w-28" : "w-10"}
       hidden md:flex

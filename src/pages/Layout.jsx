@@ -11,12 +11,13 @@ export default function Layout() {
     <>
       <Navbar />
       <SideBar />
-      <div className="flex flex-col">
+
+      <main className="flex flex-col">
         <Home />
         <About />
         <Project />
         <Contact />
-      </div>
+      </main>
     </>
   );
 }

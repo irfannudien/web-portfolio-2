@@ -1,14 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Quicksand:wght@300..700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  scrollbar-width: none; /* Untuk Firefox */
-  -ms-overflow-style: none; /* Untuk Internet Explorer */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 *::-webkit-scrollbar {
-  display: none; /* Untuk Webkit browsers (Chrome, Safari) */
+  display: none;
 }
+
+.animated-path {
+  stroke: #d4c300;
+  stroke-width: 2;
+  fill: none;
+  /* stroke-dasharray: 600;
+  stroke-dashoffset: 600; */
+  /* animation: drawLine var(--duration, 5s)
+    var(--ease, cubic-bezier(0.6, 0, 0.2, 1)) forwards;
+  animation-delay: 0.2s; */
+}
+/* 
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+} */

@@ -4,9 +4,10 @@ import { IoFileTrayFull } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 import { RiMenuUnfoldLine } from "react-icons/ri";
 import ButtonSidebar from "../Elements/ButtonSidebar";
+import { useActivePage } from "../../context/ActiveSectionContext";
 
 export default function SideBar() {
-  const [active, setActive] = useState("home");
+  const { activePage, setActivePage } = useActivePage();
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -25,36 +26,70 @@ export default function SideBar() {
   const handleClick = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      setActive(id);
+      setActivePage(id);
       section.scrollIntoView({ behavior: "auto", block: "start" });
     }
   };
 
-  const handleScrollSidebar = () => {
-    const sections = document.querySelectorAll("section");
-    const scrollPosition = window.scrollY;
-
-    sections.forEach((sec) => {
-      const scrollTop = sec.offsetTop;
-      const scrollHeight = sec.offsetHeight;
-      const sectionId = sec.getAttribute("id");
-
-      if (
-        scrollPosition >= scrollTop - 150 &&
-        scrollPosition < scrollTop + scrollHeight - 150
-      ) {
-        setActive(sectionId);
-      }
-    });
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScrollSidebar);
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            setActivePage(id);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5, // 50% kelihatan baru trigger
+      }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
 
     return () => {
-      window.removeEventListener("scroll", handleScrollSidebar);
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
-  }, []);
+  }, [setActivePage]);
+
+  // const handleScrollSidebar = () => {
+  //   const sections = document.querySelectorAll("section");
+  //   const scrollPosition = window.scrollY;
+  //   const viewportHeight = window.innerHeight;
+
+  //   sections.forEach((sec) => {
+  //     const scrollTop = sec.offsetTop;
+  //     const scrollHeight = sec.offsetHeight;
+  //     const sectionId = sec.getAttribute("id");
+
+  //     // Ini kuncinya:
+  //     const sectionCenter = scrollTop + scrollHeight / 2;
+
+  //     if (
+  //       scrollPosition + viewportHeight / 6 >= scrollTop &&
+  //       scrollPosition + viewportHeight / 6 < scrollTop + scrollHeight
+  //     ) {
+  //       setActivePage(sectionId);
+  //     }
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScrollSidebar);
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScrollSidebar);
+  //   };
+  // }, []);
 
   return (
     <div
@@ -65,7 +100,7 @@ export default function SideBar() {
         `}
       // style={{ width: isOpen ? "fit-content" : "3.5rem" }}
     >
-      <nav className="flex flex-col bg-[#404040] h-full justify-center gap-3 rounded-r-lg py-2">
+      <nav className="flex flex-col bg-[#1a1a1a]/80 backdrop-blur-md h-full justify-center gap-3 rounded-r-lg py-2 shadow-lg shadow-[#38bdf8]/10">
         <ButtonSidebar
           onClick={toggleSidebar}
           className={`flex gap-2 items-center ${
@@ -75,6 +110,7 @@ export default function SideBar() {
           <RiMenuUnfoldLine size={25} />
           {isOpen && <span className="text-sm">Menu</span>}
         </ButtonSidebar>
+
         {navItems.map((item) => (
           <ButtonSidebar
             key={item.id}
@@ -82,7 +118,9 @@ export default function SideBar() {
             className={`flex gap-2 items-center ${
               isOpen ? "rounded-none" : "rounded-r-lg"
             } ${
-              active === item.id ? "bg-[#666666]" : "text-white"
+              activePage === item.id
+                ? "bg-[#38bdf8] drop-shadow-[0_0_6px_#38bdf8] transition"
+                : "text-white"
             } duration-500`}
           >
             {item.icon}

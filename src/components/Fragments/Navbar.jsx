@@ -4,7 +4,7 @@ import { animate, motion } from "framer-motion";
 
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
-  const [isTabletUp, setIsTabletUp] = useState(false);
+  const [isTabletUp, setIsTabletUp] = useState(window.innerWidth > 767);
   const [isOpen, setIsOpen] = useState(false);
 
   // SCROLL ACTIVE
@@ -76,19 +76,19 @@ const Navbar = () => {
         
       `}
     >
-      <div className="flex items-center justify-between mx-5">
+      <div className="flex items-center justify-between mx-10 pt-1 pb-2">
         <div>
-          <p className="font-poiret text-3xl super-bold tracking-widest leading-7">
+          <p className="font-poiret text-3xl font-bold tracking-widest leading-7 text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
             ear
             <br />
-            -fun
+            <span className="text-[#38bdf8]">-fun</span>
           </p>
-          <p>Frontend Developer</p>
         </div>
+
         <div className="flex gap-2 text-2xl">
-          <FaLinkedinIn />
-          <FaGithub />
-          <FaInstagram />
+          <FaLinkedinIn className="text-white hover:text-[#38bdf8] hover:drop-shadow-[0_0_6px_#38bdf8] transition" />
+          <FaGithub className="text-white hover:text-[#a855f7] hover:drop-shadow-[0_0_6px_#a855f7] transition" />
+          <FaInstagram className="text-white hover:text-pink-500 hover:drop-shadow-[0_0_6px_#ec4899] transition" />
         </div>
         <div className="flex md:hidden">
           <button

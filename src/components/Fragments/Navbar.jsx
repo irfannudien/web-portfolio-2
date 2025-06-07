@@ -86,9 +86,28 @@ const Navbar = () => {
         </div>
 
         <div className="flex gap-2 text-2xl">
-          <FaLinkedinIn className="text-white hover:text-[#38bdf8] hover:drop-shadow-[0_0_6px_#38bdf8] transition" />
-          <FaGithub className="text-white hover:text-[#a855f7] hover:drop-shadow-[0_0_6px_#a855f7] transition" />
-          <FaInstagram className="text-white hover:text-pink-500 hover:drop-shadow-[0_0_6px_#ec4899] transition" />
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedinIn className="text-white hover:text-[#38bdf8] hover:drop-shadow-[0_0_6px_#38bdf8] transition cursor-pointer" />
+          </a>
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub className="text-white hover:text-[#a855f7] hover:drop-shadow-[0_0_6px_#a855f7] transition cursor-pointer" />
+          </a>
+
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="text-white hover:text-pink-500 hover:drop-shadow-[0_0_6px_#ec4899] transition cursor-pointer" />
+          </a>
         </div>
         <div className="flex md:hidden">
           <button

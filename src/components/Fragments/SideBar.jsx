@@ -119,7 +119,7 @@ export default function SideBar() {
               isOpen ? "rounded-none" : "rounded-r-lg"
             } ${
               activePage === item.id
-                ? "bg-[#38bdf8] drop-shadow-[0_0_6px_#38bdf8] transition"
+                ? "drop-shadow-[0_0_6px_#38bdf8] transition"
                 : "text-white"
             } duration-500`}
           >

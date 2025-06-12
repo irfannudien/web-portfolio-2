@@ -18,6 +18,34 @@ export default {
         neonBlue: "0 0 10px #00d9ff, 0 0 20px #00d9ff",
         neonPink: "0 0 10px #ff00cc, 0 0 20px #ff00cc",
       },
+      keyframes: {
+        typewriter: {
+          "0%": { width: "0ch" },
+          "100%": { width: "30ch" },
+        },
+        blink: {
+          "0%, 100%": { borderColor: "transparent" },
+          "50%": { borderColor: "#9ca3af" },
+        },
+        glitch: {
+          "0%": { transform: "translate(0)" },
+          "20%": { transform: "translate(-2px, 2px)" },
+          "40%": { transform: "translate(-2px, -2px)" },
+          "60%": { transform: "translate(2px, 2px)" },
+          "80%": { transform: "translate(2px, -2px)" },
+          "100%": { transform: "translate(0)" },
+        },
+        flicker: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0.4 },
+        },
+      },
+      animation: {
+        typewriter: "typewriter 3.5s steps(30) 1s forwards",
+        blink: "blink 1s step-end",
+        glitch: "glitch 500ms infinite",
+        flicker: "flicker 2s infinite",
+      },
     },
   },
   plugins: [

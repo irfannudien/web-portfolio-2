@@ -22,10 +22,10 @@ import {
 import { label } from "framer-motion/client";
 
 const About = () => {
-  gsap.registerPlugin(ScrollTrigger);
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const pathRef = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     const length = pathRef.current.getTotalLength();
@@ -131,55 +131,56 @@ const About = () => {
       <section
         id="about"
         ref={sectionRef}
-        className="relative min-h-screen px-40 py-15 bg-[#0e0e0e] text-white flex flex-col-reverse md:flex-row items-center justify-between gap-12 overflow-hidden"
+        className="relative px-48 py-15 bg-transparent text-white flex flex-col-reverse md:flex-row items-center justify-between gap-16 overflow-hidden"
       >
-        <div className="absolute top-20 right-10 w-72 h-72 bg-[#00ff9f]/20 rounded-full blur-[80px] pointer-events-none" />
-        <div className="absolute bottom-50 left-20 w-60 h-60 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none" />
+        {/* <div className="absolute top-20 right-10 w-72 h-72 bg-[#00ff9f]/20 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-50 left-20 w-60 h-60 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none" /> */}
+        <div className="md:w-1/2 flex flex-col relative">
+          <div id="svg-wrapper" className="absolute top-10">
+            <svg
+              viewBox="-210 150 600 400"
+              fill="none"
+              className="w-[40rem] h-auto overflow-visible"
+            >
+              <path
+                d="M-20 130, L200 130, L300 185"
+                className="animated-path"
+                ref={pathRef}
+              />
+              <circle cx="-20" cy="130" r="5" fill="#d4c300" />
+              <circle cx="300" cy="185" r="5" fill="#d4c300" />
+            </svg>
+          </div>
 
-        <div id="svg-wrapper" className="absolute top-10">
-          <svg
-            viewBox="-210 150 600 400"
-            fill="none"
-            className="w-[40rem] h-auto overflow-visible"
-          >
-            <path
-              d="M-200 200, L200 200, L325 325"
-              className="animated-path"
-              ref={pathRef}
-            />
-            <circle cx="-200" cy="200" r="5" fill="#d4c300" />
-            <circle cx="325" cy="325" r="5" fill="#d4c300" />
-          </svg>
-        </div>
+          <div className="flex flex-col fade-in gap-10">
+            <h2 className="text-2xl md:text-3xl font-majorMono tracking-wider">
+              Profile
+            </h2>
 
-        <div className="relative md:w-1/2 space-y-6 fade-in">
-          <h2 className="text-4xl md:text-5xl font-majorMono tracking-wider drop-shadow-neonPink">
-            About Me
-          </h2>
-
-          <p className="text-lg leading-relaxed font-poiret text-white fade-in tracking-widest">
-            I'm Irfan, a front-end developer who blends clean design and
-            creative interactions. I build things with love for details and a
-            techy twist.
-          </p>
-          <div className="flex flex-wrap gap-3 mt-4">
-            {skills.map((skill, index) => (
-              <span
-                key={index}
-                className="w-20 h-20 bg-white/5 border border-white/10
+            <p className="text-lg font-poiret text-white fade-in tracking-widest">
+              I'm Irfan, a front-end developer who blends clean design and
+              creative interactions. I build things with love for details and a
+              techy twist.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill, index) => (
+                <span
+                  key={index}
+                  className="w-20 h-20 bg-white/5 border border-white/10
                     backdrop-blur-md rounded-xl flex flex-col items-center justify-center
                     transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-              >
-                {skill.icon}
-                <span className="text-sm mt-1 font-poiret text-center tracking-widest">
-                  {skill.label}
+                >
+                  {skill.icon}
+                  <span className="text-xs mt-1 font-poiret text-center tracking-widest">
+                    {skill.label}
+                  </span>
                 </span>
-              </span>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="md:w-1/2 flex justify-center fade-in">
+        <div className="md:w-1/2 flex justify-center fade-in py-40">
           <img
             src={imgAbout}
             alt="Illustration"

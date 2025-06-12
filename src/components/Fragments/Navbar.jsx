@@ -26,11 +26,9 @@ const Navbar = () => {
     };
   }, []);
 
-  const bgColor = isTabletUp
-    ? isScroll
-      ? "backdrop-blur-sm bg-[#a5a5a5]/20"
-      : "bg-transparent"
-    : "bg-white";
+  const bgColor = isScroll
+    ? "backdrop-blur-sm bg-[#2d2d2d]/60"
+    : "bg-transparent";
 
   // HAMBURGER MENU
   const topBarVariants = {
@@ -85,6 +83,18 @@ const Navbar = () => {
           </p>
         </div>
 
+        <div className="hidden md:flex gap-6 text-lg font-poiret text-white tracking-widest">
+          <a href="#home" className="hover:underline">
+            Home
+          </a>
+          <a href="#profile" className="hover:underline">
+            Profile
+          </a>
+          <a href="#projects" className="hover:underline">
+            Project
+          </a>
+        </div>
+
         <div className="flex gap-2 text-2xl">
           <a
             href="https://www.linkedin.com/"
@@ -109,7 +119,7 @@ const Navbar = () => {
             <FaInstagram className="text-white hover:text-pink-500 hover:drop-shadow-[0_0_6px_#ec4899] transition cursor-pointer" />
           </a>
         </div>
-        <div className="flex md:hidden">
+        {/* <div className="flex md:hidden">
           <button
             className="flex flex-col gap-2 z-50"
             onClick={() => setIsOpen(!isOpen)}
@@ -130,7 +140,7 @@ const Navbar = () => {
               animate={isOpen ? "open" : "closed"}
             ></motion.span>
           </button>
-        </div>
+        </div> */}
 
         {isOpen && (
           <div className="md:hidden flex flex-col items-center gap-6 py-10 text-lg bg-white absolute top-[100%] left-0 w-full z-40 shadow-md">

@@ -29,3 +29,116 @@
     stroke-dashoffset: 0;
   }
 } */
+
+/* @keyframes electricFlicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #627d9b) drop-shadow(0 0 8px #371a53);
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20%,
+  24%,
+  54% {
+    opacity: 0.3;
+    filter: none;
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+  30%,
+  60% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+}
+
+.electric-letter {
+  animation: electricFlicker 5s infinite;
+  display: inline-block;
+} */
+
+/* CSS */
+/* @keyframes electricFlicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #93c5fd) drop-shadow(0 0 8px #c084fc);
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20%,
+  24%,
+  54% {
+    opacity: 0.3;
+    filter: none;
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+  30%,
+  60% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+}
+
+.electric-letter {
+  animation: electricFlicker 1.5s infinite;
+  display: inline-block;
+  background: linear-gradient(to right, #a855f7, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+} */
+
+@keyframes electricFlicker {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+    filter: drop-shadow(0 0 3px #7dd3fc) drop-shadow(0 0 5px #fffaad);
+  }
+  5% {
+    opacity: 0.3;
+    transform: translate(-1px, 1px) rotate(-1deg);
+    filter: none;
+  }
+  10% {
+    opacity: 1;
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  20% {
+    opacity: 0.2;
+    transform: translate(-2px, 2px) rotate(-2deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  40% {
+    opacity: 0.5;
+    transform: translate(1px, 1px) rotate(1deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.electric-letter {
+  animation-name: electricFlicker;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  display: inline-block;
+  background: white;
+  opacity: 0.6;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  /* text-shadow:
+    0 0 2px #ffffff40,
+    0 0 6px #7dd3fc,
+    0 0 10px #38bdf8; */
+}

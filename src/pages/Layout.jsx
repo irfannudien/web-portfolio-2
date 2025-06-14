@@ -5,6 +5,7 @@ import Contact from "./Contact";
 import Project from "./Project";
 import SideBar from "../components/Fragments/SideBar";
 import Navbar from "../components/Fragments/Navbar";
+import ProjectVertical from "./ProjectVertical";
 
 export default function Layout() {
   return (

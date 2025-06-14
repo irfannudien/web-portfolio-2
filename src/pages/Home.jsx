@@ -17,7 +17,7 @@ export default function Home() {
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",
-        end: "+=3000",
+        end: "+=9000",
         scrub: true,
         pin: true,
         onUpdate: (self) => {

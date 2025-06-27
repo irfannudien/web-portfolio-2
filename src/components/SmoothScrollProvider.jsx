@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScrollProvider({ children }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 2, // Semakin gede = scroll makin lambat
+      duration: 2,
       smooth: true,
     });
 
@@ -20,11 +20,8 @@ export default function SmoothScrollProvider({ children }) {
 
     requestAnimationFrame(raf);
 
-    // 👇 Biar GSAP tau kalau pakai custom scroll
     lenis.on("scroll", ScrollTrigger.update);
-
-    // Optional: buat debugging
-    // window.lenis = lenis;
+    ScrollTrigger.refresh();
 
     return () => {
       lenis.destroy();

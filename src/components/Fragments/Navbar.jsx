@@ -10,7 +10,7 @@ const Navbar = () => {
   // SCROLL ACTIVE
   useEffect(() => {
     const handleScrollBlur = () => {
-      setIsScroll(window.scrollY > 0);
+      setIsScroll(window.scrollY > 10);
     };
 
     const handleResize = () => {
@@ -70,7 +70,7 @@ const Navbar = () => {
   return (
     <div
       className={`
-        fixed w-full transition-all duration-300 ease-in-out px-5 items-center z-50 ${bgColor}
+        fixed w-full transition-all duration-150 ease-in-out px-5 items-center z-50 ${bgColor}
         
       `}
     >

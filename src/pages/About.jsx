@@ -38,7 +38,7 @@ const About = () => {
         { strokeDashoffset: length },
         {
           strokeDashoffset: 0,
-          duration: 5,
+          duration: 2,
           delay: 0.2,
           ease: "power2.out",
           scrollTrigger: {
@@ -138,22 +138,22 @@ const About = () => {
         <div className="md:w-1/2 flex flex-col relative">
           <div id="svg-wrapper" className="absolute top-10">
             <svg
-              viewBox="-210 150 600 400"
+              viewBox="-210 140 600 400"
               fill="none"
               className="w-[40rem] h-auto overflow-visible"
             >
               <path
-                d="M-20 130, L200 130, L300 185"
+                d="M50 130, L200 130, L300 185"
                 className="animated-path"
                 ref={pathRef}
               />
-              <circle cx="-20" cy="130" r="5" fill="#d4c300" />
+              <circle cx="50" cy="130" r="5" fill="#d4c300" />
               <circle cx="300" cy="185" r="5" fill="#d4c300" />
             </svg>
           </div>
 
           <div className="flex flex-col fade-in gap-10">
-            <h2 className="text-2xl md:text-3xl font-majorMono tracking-wider">
+            <h2 className="text-2xl md:text-5xl font-majorMono tracking-wider">
               Profile
             </h2>
 

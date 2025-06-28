@@ -21,10 +21,16 @@ export default function SmoothScrollProvider({ children }) {
     requestAnimationFrame(raf);
 
     lenis.on("scroll", ScrollTrigger.update);
-    ScrollTrigger.refresh();
+    const forceRefresh = () => {
+      ScrollTrigger.getAll().forEach((t) => t.refresh());
+      ScrollTrigger.refresh(true); // true untuk force semua ukur ulang
+    };
+
+    setTimeout(forceRefresh, 100);
 
     return () => {
       lenis.destroy();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 

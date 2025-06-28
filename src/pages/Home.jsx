@@ -71,6 +71,7 @@ export default function Home() {
 
     return () => {
       ctx.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 

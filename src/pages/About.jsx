@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
-import imgAbout from "../assets/illustration.png"; // Adjust the path as necessary
+
 import {
   FaBootstrap,
   FaCss3Alt,
@@ -19,7 +19,6 @@ import {
   SiGreensock,
   SiTailwindcss,
 } from "react-icons/si";
-import { label } from "framer-motion/client";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -131,7 +130,7 @@ const About = () => {
       <section
         id="about"
         ref={sectionRef}
-        className="relative px-48 py-15 bg-transparent text-white flex flex-col-reverse md:flex-row items-center justify-between gap-16 overflow-hidden"
+        className="relative z-10 px-48 py-16 bg-transparent text-white flex flex-col-reverse md:flex-row items-center justify-between gap-16 overflow-hidden"
       >
         {/* <div className="absolute top-20 right-10 w-72 h-72 bg-[#00ff9f]/20 rounded-full blur-[80px] pointer-events-none" />
         <div className="absolute bottom-50 left-20 w-60 h-60 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none" /> */}
@@ -182,7 +181,7 @@ const About = () => {
 
         <div className="md:w-1/2 flex justify-center fade-in py-40">
           <img
-            src={imgAbout}
+            src="https://res.cloudinary.com/daly4jtr1/image/upload/v1751254359/illustration.png"
             alt="Illustration"
             className="w-full max-w-md drop-shadow-neonPink"
           />

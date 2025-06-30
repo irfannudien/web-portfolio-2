@@ -2,28 +2,26 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BaffleText from "../hooks/BaffleText";
+// import BaffleText from "../hooks/BaffleText";
 
 export default function Home() {
   const headingRef = useRef(null);
   const lineRef = useRef(null);
   const textRef = useRef();
-  const containerRef = useRef(null);
   const blurOverlayRef = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
       ScrollTrigger.create({
-        trigger: containerRef.current,
+        trigger: document.body,
         start: "top top",
-        end: "+=9000",
+        end: "bottom bottom",
         scrub: true,
-        pin: true,
+
         onUpdate: (self) => {
           const progress = self.progress;
-
-          const isActive = progress > 0.01; // kasih ambang batas biar gak langsung nyala dari 0
+          const isActive = progress > 0.01;
           gsap.to(blurOverlayRef.current, {
             opacity: isActive ? 1 : 0,
             duration: 0.01,
@@ -67,19 +65,19 @@ export default function Home() {
           delay: 1,
         }
       );
-    }, containerRef);
+    });
+
+    ScrollTrigger.refresh();
 
     return () => {
       ctx.revert();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
   return (
     <section
       id="home"
-      ref={containerRef}
-      className="relative h-screen bg-[#0e0e0e] bg-grid-pattern flex flex-col items-center justify-center text-white overflow-hidden px-48 gap-6"
+      className="fixed w-full h-screen z-0 bg-[#0e0e0e] bg-grid-pattern flex flex-col items-center justify-center text-white overflow-hidden px-48 gap-6"
     >
       <div
         ref={blurOverlayRef}

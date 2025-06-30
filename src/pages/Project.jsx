@@ -13,19 +13,16 @@ export default function Project() {
     if (!sectionRef.current) return;
 
     const total = dataList.projectList.length;
-    // const delay = 0.05;
     const step = 1 / total;
-
-    const scrollLength = total * 700;
-    sectionRef.current.style.paddingBottom = `${scrollLength}px`;
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top top",
-        end: `+=${scrollLength}`,
+        end: () => `+=${total * 700}`,
         scrub: 0.5,
         pin: true,
+        pinSpacing: true,
         anticipatePin: 1,
       },
     });
@@ -33,7 +30,6 @@ export default function Project() {
     cardRefs.current.forEach((card, i) => {
       if (!card) return;
 
-      // Disable hover sejak awal
       card.style.pointerEvents = "none";
 
       const start = i * step;
@@ -65,7 +61,7 @@ export default function Project() {
   return (
     <section
       ref={sectionRef}
-      className="bg-transparent text-white relative min-h-screen px-48"
+      className=" text-white relative min-h-screen px-48"
     >
       <div className="h-screen flex flex-col items-center justify-center gap-6 pt-10">
         <div className="w-full text-center flex flex-col gap-4">
@@ -78,12 +74,12 @@ export default function Project() {
             style. From landing pages to digital invites.
           </p>
         </div>
-        <div className="flex gap-6 px-24">
+        <div className="horizontal-scroll flex gap-6 px-24 flex-nowrap w-fit">
           {dataList.projectList.map((item, index) => (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="group relative bg-cover bg-center rounded-2xl overflow-hidden transition-all origin-left w-[150px] h-[350px] hover:w-[220px] duration-700 font-poiret"
+              className="group relative bg-cover bg-center rounded-2xl overflow-hidden transition-all origin-left w-[150px] h-[350px] hover:w-[220px] duration-700 font-poiret shrink-0"
               style={{
                 backgroundImage: `url(${item.imageUrl})`,
               }}
@@ -107,23 +103,6 @@ export default function Project() {
                   View
                 </button>
               </div>
-              {/* <div className="w-full relative px-2">
-                <p className="absolute top-4 left-2 text-white text-sm rotate-[-90deg] origin-top-left whitespace-nowrap transition-all duration-500 ease-in-out group-hover:rotate-0 group-hover:top-4 group-hover:left-4">
-                  {p.title}
-                </p>
-
-                <div className="absolute bottom-4 left-4 flex flex-col items-start opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-                  <p className="text-white text-xs mb-1 transition-all delay-200">
-                    {p.year}
-                  </p>
-                  <p className="text-white text-xs mb-1 transition-all delay-300">
-                    {p.desc}
-                  </p>
-                  <button className="px-2 py-1 bg-white text-black text-xs rounded transition-all delay-400">
-                    View
-                  </button>
-                </div>
-              </div> */}
             </div>
           ))}
         </div>

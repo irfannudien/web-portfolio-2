@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section
       id="contact-section"
-      className="bg-transparent min-h-screen text-white flex items-center justify-center px-20 md:px-48 py-16 relative z-10"
+      className="bg-transparent min-h-screen text-white flex items-center justify-center px-20 md:px-48 pt-16 relative z-10"
     >
       <div className="w-full">
         <h1 className="text-2xl md:text-5xl font-bold font-majorMono">

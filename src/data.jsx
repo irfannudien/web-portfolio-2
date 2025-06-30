@@ -55,7 +55,7 @@ export const dataList = {
       href: "mailto:muhammadirfannudien@gmail.com",
     },
     {
-      title: "LinkedIn",
+      title: "Linkedin",
       value:
         "Let’s connect professionally and grow our network together. You can see my background on Linkedin",
       icon: <FaLinkedinIn className="text-2xl" />,

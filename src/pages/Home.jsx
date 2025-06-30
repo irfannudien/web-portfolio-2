@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import BaffleText from "../hooks/BaffleText";
 
 export default function Home() {
   const headingRef = useRef(null);
@@ -77,7 +76,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="fixed w-full h-screen z-0 bg-[#0e0e0e] bg-grid-pattern flex flex-col items-center justify-center text-white overflow-hidden px-48 gap-6"
+      className="fixed w-full h-screen z-0 bg-[#0e0e0e] bg-grid-pattern flex flex-col items-center justify-center text-white overflow-hidden px-48 gap-6 pointer-events-none"
     >
       <div
         ref={blurOverlayRef}

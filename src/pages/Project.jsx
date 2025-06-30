@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { dataList } from "../data";
+import ScrambleText from "../components/Elements/ScrambleText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,9 +66,13 @@ export default function Project() {
     >
       <div className="h-screen flex flex-col items-center justify-center gap-6 pt-10">
         <div className="w-full text-center flex flex-col gap-4">
-          <h2 className="text-2xl md:text-5xl font-bold tracking-widest text-white font-majorMono">
+          <ScrambleText
+            text="Project"
+            className="text-2xl md:text-5xl tracking-widest text-white font-majorMono font-bold"
+          />
+          {/* <h2 className="text-2xl md:text-5xl tracking-widest text-white font-majorMono font-bold">
             Projects
-          </h2>
+          </h2> */}
 
           <p className="text-lg text-gray-300 max-w-2xl mx-auto tracking-wide">
             Some of my projects, I've worked on — simple, clean, and made with

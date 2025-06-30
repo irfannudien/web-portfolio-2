@@ -8,6 +8,9 @@ import Navbar from "../components/Fragments/Navbar";
 import ProjectVertical from "./ProjectVertical";
 import Footer from "../components/Fragments/Footer";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Layout() {
   useEffect(() => {

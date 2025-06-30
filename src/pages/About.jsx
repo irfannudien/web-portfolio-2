@@ -19,6 +19,7 @@ import {
   SiGreensock,
   SiTailwindcss,
 } from "react-icons/si";
+import ScrambleText from "../components/Elements/ScrambleText";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -33,12 +34,30 @@ const About = () => {
 
     let ctx = gsap.context(() => {
       gsap.fromTo(
+        "#svg-wrapper",
+        { autoAlpha: 0, y: 50 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
         pathRef.current,
         { strokeDashoffset: length },
         {
           strokeDashoffset: 0,
-          duration: 2,
-          delay: 0.2,
+          duration: 0.8,
+          delay: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: pathRef.current,
@@ -57,32 +76,30 @@ const About = () => {
           opacity: 1,
           y: 0,
           duration: 0.8,
+          delay: 1.2,
           stagger: 0.2,
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 80%",
+            start: "top 85%",
             toggleActions: "play none none none",
             once: true,
           },
         }
       );
 
-      // Heading animation
       gsap.fromTo(
         headingRef.current,
-        { scale: 0.8, opacity: 0, y: 20 },
+        { y: 40, opacity: 0 },
         {
-          scale: 1,
-          opacity: 1,
           y: 0,
+          opacity: 1,
           duration: 1,
-          ease: "power3.out",
+          ease: "power4.out",
           scrollTrigger: {
             trigger: headingRef.current,
-            start: "top 80%",
+            start: "top 100%",
             toggleActions: "play none none none",
-            once: true,
           },
         }
       );
@@ -151,10 +168,17 @@ const About = () => {
             </svg>
           </div>
 
-          <div className="flex flex-col fade-in gap-10">
-            <h2 className="text-2xl md:text-5xl font-majorMono tracking-wider">
+          <div className="flex flex-col gap-10">
+            <ScrambleText
+              text="Profile"
+              className="text-2xl md:text-5xl font-majorMono tracking-wider font-bold"
+            />
+            {/* <h2
+              ref={headingRef}
+              className="text-2xl md:text-5xl font-majorMono tracking-wider font-bold"
+            >
               Profile
-            </h2>
+            </h2> */}
 
             <p className="text-lg font-poiret text-white fade-in tracking-widest">
               I'm Irfan, a front-end developer who blends clean design and

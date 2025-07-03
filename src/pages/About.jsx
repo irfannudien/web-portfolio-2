@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from "react";
 import {
   FaBootstrap,
   FaCss3Alt,
+  FaFacebook,
   FaGitAlt,
   FaHtml5,
   FaJs,
@@ -20,6 +21,7 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 import ScrambleText from "../components/Elements/ScrambleText";
+import GsapMagnetic from "../components/Elements/GsapMagnetic";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -82,6 +84,27 @@ const About = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 85%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+
+      // gsap.set(".skill-item", { autoAlpha: 0, y: 40 });
+
+      gsap.fromTo(
+        ".skill-item",
+        { autoAlpha: 0, y: 40 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 1.2,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 90%",
             toggleActions: "play none none none",
             once: true,
           },
@@ -185,19 +208,23 @@ const About = () => {
               creative interactions. I build things with love for details and a
               techy twist.
             </p>
+
             <div className="flex flex-wrap gap-2">
               {skills.map((skill, index) => (
-                <span
-                  key={index}
-                  className="w-20 h-20 bg-white/5 border border-white/10
+                <GsapMagnetic>
+                  <span
+                    key={index}
+                    className="skill-item w-20 h-20 bg-white/5 border border-white/10
                     backdrop-blur-md rounded-xl flex flex-col items-center justify-center
-                    transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                >
-                  {skill.icon}
-                  <span className="text-xs mt-1 font-poiret text-center tracking-widest">
-                    {skill.label}
+                    transition-shadow duration-300
+                    hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                  >
+                    {skill.icon}
+                    <span className="text-xs mt-1 font-poiret text-center tracking-widest">
+                      {skill.label}
+                    </span>
                   </span>
-                </span>
+                </GsapMagnetic>
               ))}
             </div>
           </div>

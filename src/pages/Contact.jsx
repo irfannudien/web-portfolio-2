@@ -7,6 +7,32 @@ import { dataList } from "../data";
 export default function Contact() {
   const { activePage } = useActivePage();
 
+  const handleClick = (e, item) => {
+    if (item.title === "Email") {
+      e.preventDefault();
+
+      const email = "muhammadirfannudien@gmail.com";
+      const subject = encodeURIComponent("Let's Work Together");
+      const body = encodeURIComponent(
+        "Hi Irfan, \nI saw your portfolio and I'm interested to collaborating ..."
+      );
+
+      const gmailWeb = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+      const gmailApp = `googlegmail://co?to=${email}&subject=${subject}&body=${body}`;
+
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.location.href = gmailApp;
+        setTimeout(() => {
+          window.location.href = gmailWeb;
+        }, 1000);
+      } else {
+        window.open(gmailWeb, "_blank");
+      }
+    }
+  };
+
   return (
     <section
       id="contact-section"
@@ -24,6 +50,7 @@ export default function Contact() {
             <a
               key={index}
               href={item.href}
+              onClick={(e) => handleClick(e, item)}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-start gap-6 md:gap-4 cursor-pointer"

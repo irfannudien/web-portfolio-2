@@ -3,6 +3,7 @@ import { useActivePage } from "../context/ActiveSectionContext";
 
 import { FaLocationArrow } from "react-icons/fa6";
 import { dataList } from "../data";
+import ScrambleText from "../components/Elements/ScrambleText";
 
 export default function Contact() {
   const { activePage } = useActivePage();
@@ -39,9 +40,10 @@ export default function Contact() {
       className="bg-transparent min-h-screen text-white flex items-center justify-center px-20 md:px-48 pt-16 relative z-10"
     >
       <div className="w-full">
-        <h1 className="text-2xl md:text-5xl font-majorMono font-bold ">
-          Contact
-        </h1>
+        <ScrambleText
+          text="Contact"
+          className="text-2xl md:text-5xl tracking-widest text-white font-majorMono font-bold"
+        />
         <p className="mt-4 text-gray-300">
           Feel free to reach out via email or through my social platforms below.
         </p>

@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import {
   FaBootstrap,
@@ -22,10 +22,11 @@ import {
 } from "react-icons/si";
 import ScrambleText from "../components/Elements/ScrambleText";
 import GsapMagnetic from "../components/Elements/GsapMagnetic";
+import FluidImageMask from "../components/FluidImageMask";
 
 const About = () => {
+  const [shouldAnimateImage, setShouldAnimateImage] = useState(false);
   const sectionRef = useRef(null);
-  const headingRef = useRef(null);
   const pathRef = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +59,7 @@ const About = () => {
         { strokeDashoffset: length },
         {
           strokeDashoffset: 0,
-          duration: 0.8,
+          duration: 2.5,
           delay: 1,
           ease: "power2.out",
           scrollTrigger: {
@@ -90,8 +91,6 @@ const About = () => {
         }
       );
 
-      // gsap.set(".skill-item", { autoAlpha: 0, y: 40 });
-
       gsap.fromTo(
         ".skill-item",
         { autoAlpha: 0, y: 40 },
@@ -111,21 +110,14 @@ const About = () => {
         }
       );
 
-      gsap.fromTo(
-        headingRef.current,
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 100%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 80%",
+        once: true,
+        onEnter: () => {
+          setShouldAnimateImage(true);
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -231,11 +223,12 @@ const About = () => {
         </div>
 
         <div className="md:w-1/2 flex justify-center fade-in py-40">
-          <img
+          <FluidImageMask shouldAnimate={shouldAnimateImage} />
+          {/* <img
             src="https://res.cloudinary.com/daly4jtr1/image/upload/v1751254359/illustration.png"
             alt="Illustration"
             className="w-full max-w-md drop-shadow-neonPink"
-          />
+          /> */}
         </div>
       </section>
     </>

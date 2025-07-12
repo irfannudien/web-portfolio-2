@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="relative py-4 z-20">
-      <div className="text-center">
+      <div className="flex flex-col items-center">
         <p className="font-poiret text-2xl md:text-3xl font-bold tracking-widest leading-7 text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
           ear
           <br />

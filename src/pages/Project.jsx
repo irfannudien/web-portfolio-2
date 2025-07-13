@@ -62,7 +62,8 @@ export default function Project() {
   return (
     <section
       ref={sectionRef}
-      className=" text-white relative min-h-screen px-48"
+      id="project"
+      className="relative z-10 min-h-screen text-white px-48 overflow-hidden"
     >
       <div className="h-screen flex flex-col items-center justify-center gap-6 pt-10">
         <div className="w-full text-center flex flex-col gap-4">

@@ -12,6 +12,7 @@ export default function SmoothScrollProvider({ children }) {
       duration: 2,
       smooth: true,
     });
+    window.lenis = lenis;
 
     function raf(time) {
       lenis.raf(time);
@@ -23,7 +24,7 @@ export default function SmoothScrollProvider({ children }) {
     lenis.on("scroll", ScrollTrigger.update);
     const forceRefresh = () => {
       ScrollTrigger.getAll().forEach((t) => t.refresh());
-      ScrollTrigger.refresh(true); // true untuk force semua ukur ulang
+      ScrollTrigger.refresh(true);
     };
 
     setTimeout(forceRefresh, 100);

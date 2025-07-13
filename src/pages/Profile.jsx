@@ -24,7 +24,7 @@ import ScrambleText from "../components/Elements/ScrambleText";
 import GsapMagnetic from "../components/Elements/GsapMagnetic";
 import FluidImageMask from "../components/FluidImageMask";
 
-const About = () => {
+const Profile = () => {
   const [shouldAnimateImage, setShouldAnimateImage] = useState(false);
   const sectionRef = useRef(null);
   const pathRef = useRef(null);
@@ -160,7 +160,7 @@ const About = () => {
   return (
     <>
       <section
-        id="about"
+        id="profile"
         ref={sectionRef}
         className="relative z-10 px-48 py-16 bg-transparent text-white flex flex-col-reverse md:flex-row items-center justify-between gap-16 overflow-hidden"
       >
@@ -203,9 +203,8 @@ const About = () => {
 
             <div className="flex flex-wrap gap-2">
               {skills.map((skill, index) => (
-                <GsapMagnetic>
+                <GsapMagnetic key={index}>
                   <span
-                    key={index}
                     className="skill-item w-20 h-20 bg-white/5 border border-white/10
                     backdrop-blur-md rounded-xl flex flex-col items-center justify-center
                     transition-shadow duration-300
@@ -235,4 +234,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Profile;

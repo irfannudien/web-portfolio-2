@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Home from "./Home";
-import About from "./About";
+import Profile from "./Profile";
 import Contact from "./Contact";
 import Project from "./Project";
 import SideBar from "../components/Fragments/SideBar";
@@ -13,21 +13,15 @@ import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Layout() {
-  useEffect(() => {
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 500);
-  }, []);
-
   return (
     <>
       <Navbar />
-      <SideBar />
+      {/* <SideBar /> */}
 
       <main className="flex flex-col">
         <Home />
         <div className="relative z-10 h-screen" />
-        <About />
+        <Profile />
         <Project />
         <Contact />
       </main>

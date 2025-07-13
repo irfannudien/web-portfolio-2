@@ -36,8 +36,8 @@ export default function Contact() {
 
   return (
     <section
-      id="contact-section"
-      className="bg-transparent min-h-screen text-white flex items-center justify-center px-20 md:px-48 pt-16 relative z-10"
+      id="contact"
+      className="relative z-10 bg-transparent min-h-screen text-white flex items-center justify-center px-20 md:px-48 pt-16 overflow-hidden"
     >
       <div className="w-full">
         <ScrambleText

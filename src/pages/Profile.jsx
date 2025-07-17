@@ -26,6 +26,9 @@ import FluidImageMask from "../components/FluidImageMask";
 
 const Profile = () => {
   const [shouldAnimateImage, setShouldAnimateImage] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const sectionRef = useRef(null);
   const pathRef = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
@@ -123,6 +126,21 @@ const Profile = () => {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsTablet(width >= 768 && width <= 1024);
+      setIsDesktop(width > 1366);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const skills = [
     { icon: <FaHtml5 className="text-orange-400" size={30} />, label: "HTML" },
     { icon: <FaCss3Alt className="text-blue-500" size={30} />, label: "CSS" },
@@ -162,27 +180,11 @@ const Profile = () => {
       <section
         id="profile"
         ref={sectionRef}
-        className="relative z-10 px-48 py-16 bg-transparent text-white flex flex-col-reverse md:flex-row items-center justify-between gap-16 overflow-hidden"
+        className="relative z-10 px-6 sm:px-8 md:px-16 lg:px-32 xl:px-48 2xl:px-64 3xl:px-80 4xl:px-96 py-16 bg-transparent text-white flex flex-col-reverse md:flex-row items-center justify-between gap-16 overflow-hidden"
       >
         {/* <div className="absolute top-20 right-10 w-72 h-72 bg-[#00ff9f]/20 rounded-full blur-[80px] pointer-events-none" />
         <div className="absolute bottom-50 left-20 w-60 h-60 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none" /> */}
-        <div className="md:w-1/2 flex flex-col relative">
-          <div id="svg-wrapper" className="absolute top-10">
-            <svg
-              viewBox="-210 140 600 400"
-              fill="none"
-              className="w-[40rem] h-auto overflow-visible"
-            >
-              <path
-                d="M50 130, L200 130, L300 185"
-                className="animated-path"
-                ref={pathRef}
-              />
-              <circle cx="50" cy="130" r="5" fill="#d4c300" />
-              <circle cx="300" cy="185" r="5" fill="#d4c300" />
-            </svg>
-          </div>
-
+        <div className="w-full md:w-1/2 flex flex-col relative">
           <div className="flex flex-col gap-10">
             <ScrambleText
               text="Profile"
@@ -201,7 +203,7 @@ const Profile = () => {
               techy twist.
             </p>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(5rem,1fr))] gap-x-2 gap-y-2 sm:gap-y-3 md:gap-y-4 w-full">
               {skills.map((skill, index) => (
                 <GsapMagnetic key={index}>
                   <span
@@ -219,15 +221,45 @@ const Profile = () => {
               ))}
             </div>
           </div>
+
+          <div id="svg-wrapper" className="absolute top-10">
+            <svg
+              viewBox="-210 140 600 400"
+              fill="none"
+              className="w-[40rem] h-auto overflow-visible"
+            >
+              <path
+                d={
+                  isMobile
+                    ? "M-50 120, L50 120"
+                    : isTablet
+                    ? "M50 130, L150 130, L250 200"
+                    : isDesktop
+                    ? "M50 130, L250 130, L400 185"
+                    : "M50 130, L200 130, L300 185"
+                }
+                className="animated-path"
+                ref={pathRef}
+              />
+              <circle
+                cx={isMobile ? "-50" : "50"}
+                cy={isMobile ? "120" : "130"}
+                r="5"
+                fill="#d4c300"
+              />
+              {isMobile ? null : isTablet ? (
+                <circle cx="250" cy="200" r="5" fill="#d4c300" />
+              ) : isDesktop ? (
+                <circle cx="400" cy="185" r="5" fill="#d4c300" />
+              ) : (
+                <circle cx="300" cy="185" r="5" fill="#d4c300" />
+              )}
+            </svg>
+          </div>
         </div>
 
-        <div className="md:w-1/2 flex justify-center fade-in py-40">
+        <div className="w-full sm:w-4/5 md:w-1/2 lg:w-[40%] flex justify-center items-center mx-auto fade-in">
           <FluidImageMask shouldAnimate={shouldAnimateImage} />
-          {/* <img
-            src="https://res.cloudinary.com/daly4jtr1/image/upload/v1751254359/illustration.png"
-            alt="Illustration"
-            className="w-full max-w-md drop-shadow-neonPink"
-          /> */}
         </div>
       </section>
     </>

@@ -46,6 +46,10 @@ export default {
         glitch: "glitch 500ms infinite",
         flicker: "flicker 2s infinite",
       },
+      screens: {
+        "3xl": "1920px",
+        "4xl": "2560px",
+      },
     },
   },
   plugins: [

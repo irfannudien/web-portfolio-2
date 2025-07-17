@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import ProjectCardVertical from "./ProjectCardVertical";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,12 +11,11 @@ const projectList = Array.from({ length: 5 }, (_, i) => ({
   desc: `Deskripsi project ${i + 1}`,
 }));
 
-export default function ProjectVertical() {
+export default function VerticalAnimate() {
   const lenis = useRef();
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    // Init Lenis
     const lenisInstance = new Lenis({ smooth: true });
     lenis.current = lenisInstance;
 
@@ -25,7 +25,6 @@ export default function ProjectVertical() {
     }
     requestAnimationFrame(raf);
 
-    // Sinkronisasi ScrollTrigger
     ScrollTrigger.scrollerProxy(document.body, {
       scrollTop(value) {
         return arguments.length
@@ -45,7 +44,6 @@ export default function ProjectVertical() {
 
     ScrollTrigger.refresh();
 
-    // Animasi scroll muncul satu-satu naik
     cardsRef.current.forEach((card, i) => {
       if (card) {
         gsap.fromTo(
@@ -68,16 +66,14 @@ export default function ProjectVertical() {
   }, []);
 
   return (
-    <section className="min-h-screen px-24 py-32 bg-neutral-900 text-white">
+    <section className="min-h-screen w-full text-white">
       <div className="flex flex-col gap-16">
         {projectList.map((p, i) => (
-          <div
+          <ProjectCardVertical
             key={i}
-            ref={(el) => (cardsRef.current[i] = el)}
-            className="w-full h-64 bg-white text-black rounded-xl shadow-xl p-6 text-xl font-semibold flex items-center justify-center"
-          >
-            {p.title}
-          </div>
+            title={p.title}
+            innerRef={(el) => (cardsRef.current[i] = el)}
+          />
         ))}
       </div>
     </section>

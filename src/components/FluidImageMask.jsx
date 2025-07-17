@@ -95,8 +95,11 @@ export default function FluidImageMask({ shouldAnimate = false }) {
   }, [shouldAnimate]);
 
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-transparent">
-      <canvas ref={canvasRef} />
+    <div className="w-full flex items-center justify-center">
+      <canvas
+        ref={canvasRef}
+        className="w-[300px] sm:w-[350px] md:w-[410px] h-auto"
+      />
     </div>
   );
 }

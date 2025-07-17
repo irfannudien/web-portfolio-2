@@ -21,7 +21,25 @@ export default function SmoothScrollProvider({ children }) {
 
     requestAnimationFrame(raf);
 
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value) {
+        return arguments.length
+          ? lenis.scrollTo(value, { immediate: true })
+          : lenis.scroll.instance.scroll.y;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      pinType: document.body.style.transform ? "transform" : "fixed",
+    });
+
     lenis.on("scroll", ScrollTrigger.update);
+
     const forceRefresh = () => {
       ScrollTrigger.getAll().forEach((t) => t.refresh());
       ScrollTrigger.refresh(true);

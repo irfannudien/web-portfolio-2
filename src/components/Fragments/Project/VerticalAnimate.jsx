@@ -1,81 +1,78 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
+import ProjectHeader from "./ProjectHeader";
 import ProjectCardVertical from "./ProjectCardVertical";
+import { dataList } from "../../../data";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projectList = Array.from({ length: 5 }, (_, i) => ({
-  title: `Project ${i + 1}`,
-  desc: `Deskripsi project ${i + 1}`,
-}));
-
-export default function VerticalAnimate() {
-  const lenis = useRef();
-  const cardsRef = useRef([]);
+export default function VerticalAnimate({ sectionRef }) {
+  const itemsRef = useRef([]);
 
   useEffect(() => {
-    const lenisInstance = new Lenis({ smooth: true });
-    lenis.current = lenisInstance;
+    if (!sectionRef?.current) return;
 
-    function raf(time) {
-      lenisInstance.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    const items = itemsRef.current.filter(Boolean);
 
-    ScrollTrigger.scrollerProxy(document.body, {
-      scrollTop(value) {
-        return arguments.length
-          ? lenisInstance.scrollTo(value)
-          : window.scrollY;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      pinType: document.body.style.transform ? "transform" : "fixed",
+    items.forEach((item, index) => {
+      if (index !== 0) {
+        gsap.set(item, { yPercent: 100 });
+      }
     });
 
-    ScrollTrigger.refresh();
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        pin: true,
+        start: "top top",
+        end: `+=${items.length * 100}%`,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        pinSpacing: true,
+        refreshPriority: -1,
+      },
+      defaults: { ease: "none" },
+    });
 
-    cardsRef.current.forEach((card, i) => {
-      if (card) {
-        gsap.fromTo(
-          card,
-          { y: 100, opacity: 0 },
+    items.forEach((item, index) => {
+      timeline.to(item, {
+        scale: 0.9,
+        borderRadius: "0.5rem",
+      });
+
+      if (index < items.length - 1) {
+        timeline.to(
+          items[index + 1],
           {
-            y: 0,
-            opacity: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              end: "top 40%",
-              scrub: true,
-            },
-          }
+            yPercent: 0,
+          },
+          "<"
         );
       }
     });
-  }, []);
+
+    return () => {
+      timeline.scrollTrigger?.kill();
+      timeline.kill();
+    };
+  }, [sectionRef]);
 
   return (
-    <section className="min-h-screen w-full text-white">
-      <div className="flex flex-col gap-16">
-        {projectList.map((p, i) => (
-          <ProjectCardVertical
-            key={i}
-            title={p.title}
-            innerRef={(el) => (cardsRef.current[i] = el)}
-          />
-        ))}
+    <div className="h-screen flex flex-col justify-center">
+      <div className="h-1/2 flex flex-col gap-6">
+        <ProjectHeader />
+
+        <div className="relative h-full w-full flex items-start justify-center p-1 overflow-hidden gap-5">
+          {dataList.projectList.map((item, i) => (
+            <ProjectCardVertical
+              key={i}
+              item={item}
+              innerRef={(el) => (itemsRef.current[i] = el)}
+            />
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

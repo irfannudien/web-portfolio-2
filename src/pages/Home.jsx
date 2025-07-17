@@ -17,7 +17,7 @@ export default function Home() {
         start: "top top",
         end: "bottom bottom",
         scrub: true,
-
+        scroller: document.body,
         onUpdate: (self) => {
           const progress = self.progress;
           const isActive = progress > 0.01;
@@ -35,7 +35,7 @@ export default function Home() {
         { scale: 1, opacity: 1, y: 0, duration: 1, ease: "power3.out" }
       );
 
-      let targetWidth = "7rem"; // default untuk desktop
+      let targetWidth = "7rem";
 
       const screenWidth = window.innerWidth;
 
@@ -83,8 +83,6 @@ export default function Home() {
         }
       );
     });
-
-    ScrollTrigger.refresh();
 
     return () => {
       ctx.revert();

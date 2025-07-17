@@ -1,2 +1,2 @@
-export { default as ScrollAnimate } from "./ScrollAnimate";
+export { default as HorizontalAnimate } from "./HorizontalAnimate";
 export { default as VerticalAnimate } from "./VerticalAnimate";

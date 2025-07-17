@@ -44,6 +44,55 @@ export const dataList = {
       imageUrl:
         "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
     },
+    // {
+    //   title: "Game Landing",
+    //   year: 2021,
+    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
+    // },
+    // {
+    //   title: "Game Landing",
+    //   year: 2021,
+    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
+    // },
+    // {
+    //   title: "Game Landing",
+    //   year: 2021,
+    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
+    // },
+    // {
+    //   title: "Game Landing",
+    //   year: 2021,
+    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
+    // },
+    // {
+    //   title: "Game Landing",
+    //   year: 2021,
+    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
+    // },
+    // {
+    //   title: "Game Landing",
+    //   year: 2021,
+    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
+    // },
+    // {
+    //   title: "Game Landing",
+    //   year: 2021,
+    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
+    // },
   ],
 
   contacts: [

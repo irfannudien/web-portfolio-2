@@ -4,16 +4,19 @@ import ProjectCardHorizontal from "./ProjectCardHorizontal";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { dataList } from "../../../data";
+import ProjectHeader from "./ProjectHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ScrollAnimate({ sectionRef }) {
+export default function HorizontalAnimate({ sectionRef }) {
   const cardRefs = useRef([]);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef?.current) return;
 
-    const total = dataList.projectList.length;
+    const cards = cardRefs.current.filter(Boolean);
+
+    const total = cards.length;
     const step = 1 / total;
 
     const tl = gsap.timeline({
@@ -25,12 +28,14 @@ export default function ScrollAnimate({ sectionRef }) {
         pin: true,
         pinSpacing: true,
         anticipatePin: 1,
+        refreshPriority: -1,
       },
     });
 
-    cardRefs.current.forEach((card, i) => {
+    cards.forEach((card, i) => {
       if (!card) return;
 
+      gsap.set(card, { y: 100, autoAlpha: 0 });
       card.style.pointerEvents = "none";
 
       const start = i * step;
@@ -57,19 +62,24 @@ export default function ScrollAnimate({ sectionRef }) {
       tl.scrollTrigger?.kill();
       tl.kill();
     };
-  }, []);
+  }, [sectionRef]);
 
   return (
-    <div className="flex gap-6 px-24 flex-nowrap w-fit">
-      {dataList.projectList.map((item, index) => (
-        <ProjectCardHorizontal
-          key={index}
-          innerRef={(el) => (cardRefs.current[index] = el)}
-          title={item.title}
-          imageUrl={item.imageUrl}
-          year={item.year}
-        />
-      ))}
-    </div>
+    <>
+      <div className="h-screen flex flex-col items-center justify-center gap-6 pt-10">
+        <ProjectHeader />
+        <div className="flex gap-6 px-24 flex-nowrap w-fit">
+          {dataList.projectList.map((item, index) => (
+            <ProjectCardHorizontal
+              key={index}
+              innerRef={(el) => (cardRefs.current[index] = el)}
+              title={item.title}
+              imageUrl={item.imageUrl}
+              year={item.year}
+            />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

@@ -53,6 +53,7 @@ const Profile = () => {
             start: "top 85%",
             toggleActions: "play none none none",
             once: true,
+            scroller: document.body,
           },
         }
       );
@@ -70,6 +71,7 @@ const Profile = () => {
             start: "top 80%",
             toggleActions: "play none none none",
             once: true,
+            scroller: document.body,
           },
         }
       );
@@ -90,6 +92,7 @@ const Profile = () => {
             start: "top 85%",
             toggleActions: "play none none none",
             once: true,
+            scroller: document.body,
           },
         }
       );
@@ -109,6 +112,7 @@ const Profile = () => {
             start: "top 90%",
             toggleActions: "play none none none",
             once: true,
+            scroller: document.body,
           },
         }
       );

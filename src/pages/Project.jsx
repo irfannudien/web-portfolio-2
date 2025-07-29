@@ -9,7 +9,7 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Project() {
+export default function Project({ setIsModalOpen }) {
   const sectionRef = useRef(null);
   const desktopRef = useRef(null);
   const mobileRef = useRef(null);
@@ -34,7 +34,6 @@ export default function Project() {
 
   return (
     <section
-      // // ref={isDesktop ? desktopRef : mobileRef}
       ref={sectionRef}
       id="project"
       className="relative z-10 min-h-screen text-white px-48 overflow-hidden"
@@ -51,9 +50,17 @@ export default function Project() {
       {/* {isDesktop && <HorizontalAnimate isActive={true} />}
       {!isDesktop && <VerticalAnimate isActive={true} />} */}
       {isDesktop ? (
-        <HorizontalAnimate sectionRef={sectionRef} key="desktop" />
+        <HorizontalAnimate
+          sectionRef={sectionRef}
+          setIsModalOpen={setIsModalOpen}
+          key="desktop"
+        />
       ) : (
-        <VerticalAnimate sectionRef={sectionRef} key="mobile" />
+        <VerticalAnimate
+          sectionRef={sectionRef}
+          setIsModalOpen={setIsModalOpen}
+          key="mobile"
+        />
       )}
       {/* </div> */}
     </section>

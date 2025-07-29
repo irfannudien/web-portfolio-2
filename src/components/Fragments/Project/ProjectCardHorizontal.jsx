@@ -1,11 +1,8 @@
 import React from "react";
 
-export default function ProjectCardHorizontal({
-  title,
-  year,
-  imageUrl,
-  innerRef,
-}) {
+export default function ProjectCardHorizontal(props) {
+  const { title, year, imageUrl, innerRef, desc, onViewClick } = props;
+
   return (
     <div
       ref={innerRef}
@@ -22,7 +19,10 @@ export default function ProjectCardHorizontal({
         <p className="text-white text-base transition-all delay-200 tracking-widest">
           {year}
         </p>
-        <button className="px-5 py-1 bg-white text-black text-sm rounded transition-all delay-400">
+        <button
+          className="px-5 py-1 bg-white text-black text-sm rounded transition-all delay-400"
+          onClick={() => onViewClick({ title, year, imageUrl, desc })}
+        >
           View
         </button>
       </div>

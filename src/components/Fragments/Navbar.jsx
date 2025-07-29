@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HamburgerButton from "./HamburgerButton";
 gsap.registerPlugin(ScrollTrigger);
 
-const Navbar = () => {
+const Navbar = ({ isModalOpen }) => {
   const [isScroll, setIsScroll] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,6 +22,10 @@ const Navbar = () => {
     : isScroll
     ? "bg-black/60 backdrop-blur-sm "
     : "bg-transparent";
+
+  const navbarClass = isModalOpen
+    ? "hidden"
+    : "fixed w-full z-30 transition-all duration-150 ease-in-out";
 
   // Hamburger bar animation
   const topBarVariants = {
@@ -50,63 +54,67 @@ const Navbar = () => {
   };
 
   return (
-    <div
-      className={`fixed w-full z-50 transition-all duration-150 ease-in-out ${bgColor}`}
-    >
-      <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 py-2">
-        {/* Logo */}
-        <div className="border-r border-white pr-4 sm:pr-6 md:pr-10">
-          <p className="font-poiret text-2xl sm:text-3xl font-bold tracking-widest md:leading-7 leading-6 text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
-            ear
-            <br />
-            <span className="text-[#38bdf8]">-fun</span>
-          </p>
-        </div>
+    <div className={navbarClass}>
+      <div
+        className={`fixed w-full z-30 transition-all duration-150 ease-in-out ${bgColor}`}
+      >
+        <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 py-2">
+          {/* Logo */}
+          <div className="border-r border-white pr-4 sm:pr-6 md:pr-10">
+            <p className="font-poiret text-2xl sm:text-3xl font-bold tracking-widest md:leading-7 leading-6 text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+              ear
+              <br />
+              <span className="text-[#38bdf8]">-fun</span>
+            </p>
+          </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6 text-base lg:text-lg font-poiret text-white tracking-widest">
-          <a href="#profile" className="hover:text-yellow-400 transition">
-            Profile
-          </a>
-          <a href="#projects" className="hover:text-yellow-400 transition">
-            Project
-          </a>
-          <a href="#contact" className="hover:text-yellow-400 transition">
-            Contact
-          </a>
-        </nav>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex gap-6 text-base lg:text-lg font-poiret text-white tracking-widest">
+            <a href="#profile" className="hover:text-yellow-400 transition">
+              Profile
+            </a>
+            <a href="#projects" className="hover:text-yellow-400 transition">
+              Project
+            </a>
+            <a href="#contact" className="hover:text-yellow-400 transition">
+              Contact
+            </a>
+          </nav>
 
-        {/* Desktop Icons */}
-        <div className="hidden md:flex gap-4 sm:gap-5 text-xl sm:text-2xl">
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedinIn className="text-white hover:text-[#38bdf8] hover:drop-shadow-[0_0_6px_#38bdf8] transition" />
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub className="text-white hover:text-[#a855f7] hover:drop-shadow-[0_0_6px_#a855f7] transition" />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram className="text-white hover:text-pink-500 hover:drop-shadow-[0_0_6px_#ec4899] transition" />
-          </a>
-        </div>
+          {/* Desktop Icons */}
+          <div className="hidden md:flex gap-4 sm:gap-5 text-xl sm:text-2xl">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn className="text-white hover:text-[#38bdf8] hover:drop-shadow-[0_0_6px_#38bdf8] transition" />
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub className="text-white hover:text-[#a855f7] hover:drop-shadow-[0_0_6px_#a855f7] transition" />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram className="text-white hover:text-pink-500 hover:drop-shadow-[0_0_6px_#ec4899] transition" />
+            </a>
+          </div>
 
-        {/* Hamburger (mobile) */}
-        <div className="flex md:hidden justify-end">
-          <HamburgerButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
-        </div>
+          {/* Hamburger (mobile) */}
+          <div className="flex md:hidden justify-end">
+            <HamburgerButton
+              isOpen={isOpen}
+              toggle={() => setIsOpen(!isOpen)}
+            />
+          </div>
 
-        {/* <div className="flex md:hidden">
+          {/* <div className="flex md:hidden">
           <button
             className="flex flex-col gap-2 z-50"
             onClick={() => setIsOpen(!isOpen)}
@@ -128,10 +136,10 @@ const Navbar = () => {
             ></motion.span>
           </button>
         </div> */}
-      </div>
+        </div>
 
-      {/* Sidebar Slide-in */}
-      {/* <AnimatePresence>
+        {/* Sidebar Slide-in */}
+        {/* <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-40 flex md:hidden ">
             <motion.div
@@ -181,6 +189,7 @@ const Navbar = () => {
           </div>
         )}
       </AnimatePresence> */}
+      </div>
     </div>
   );
 };

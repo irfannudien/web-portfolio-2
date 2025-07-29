@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./Home";
 import Profile from "./Profile";
 import Contact from "./Contact";
@@ -13,16 +13,17 @@ import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Layout() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <Navbar />
+      <Navbar isModalOpen={isModalOpen} />
       {/* <SideBar /> */}
 
       <main className="flex flex-col">
         <Home />
         <div className="relative z-10 h-screen" />
         <Profile />
-        <Project />
+        <Project setIsModalOpen={setIsModalOpen} />
         <Contact />
       </main>
 

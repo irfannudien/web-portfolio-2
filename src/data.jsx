@@ -12,87 +12,46 @@ export const dataList = {
     {
       title: "Code JAX",
       year: 2025,
-      // desc: "Landing page untuk barbershop maskulin.",
+      desc: "Landing page for digital agency.",
       imageUrl:
         "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919341/project1.jpg",
     },
     {
       title: "Barberians",
       year: 2025,
-      // desc: "Aplikasi booking untuk barbershop.",
+      desc: `BarBerians was born from a simple idea — to bring back the spirit of
+          the classic barbershop and evolve it for the modern man. We blend
+          tradition and innovation to create more than a grooming destination —
+          we create a movement.
+          Founded by a group of barbers and creatives who saw the barbershop
+            as more than a place to get a haircut, BarBerians began as a
+            rebellion against rushed trims and soulless service. We envisioned a
+            space where craft, care, and character all come together — where
+            every cut has meaning, and every customer is treated like a brother.`,
       imageUrl:
         "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919336/project2.jpg",
     },
     {
       title: "Wedding Invitation",
       year: 2023,
-      // desc: "Dashboard pelaporan dan manajemen user.",
+      desc: "Wedding apps for invitations your wedding party",
       imageUrl:
         "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919339/project3.jpg",
     },
     {
       title: "Mendoan Indonesia",
       year: 2022,
-      // desc: "Sistem kasir untuk transaksi barbershop.",
+      desc: "Mendoan id.",
       imageUrl:
         "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919316/project4.jpg",
     },
     {
       title: "Game Landing",
       year: 2021,
-      // desc: "Fitur poin & reward untuk pelanggan tetap.",
+      desc: "Landing page for game web.",
       imageUrl:
         "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
     },
-    // {
-    //   title: "Game Landing",
-    //   year: 2021,
-    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
-    //   imageUrl:
-    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
-    // },
-    // {
-    //   title: "Game Landing",
-    //   year: 2021,
-    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
-    //   imageUrl:
-    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
-    // },
-    // {
-    //   title: "Game Landing",
-    //   year: 2021,
-    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
-    //   imageUrl:
-    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
-    // },
-    // {
-    //   title: "Game Landing",
-    //   year: 2021,
-    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
-    //   imageUrl:
-    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
-    // },
-    // {
-    //   title: "Game Landing",
-    //   year: 2021,
-    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
-    //   imageUrl:
-    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
-    // },
-    // {
-    //   title: "Game Landing",
-    //   year: 2021,
-    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
-    //   imageUrl:
-    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
-    // },
-    // {
-    //   title: "Game Landing",
-    //   year: 2021,
-    //   // desc: "Fitur poin & reward untuk pelanggan tetap.",
-    //   imageUrl:
-    //     "https://res.cloudinary.com/daly4jtr1/image/upload/v1749919340/project5.jpg",
-    // },
   ],
 
   contacts: [
